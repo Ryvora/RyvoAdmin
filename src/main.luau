@@ -1,6 +1,6 @@
 local genv = (type(getgenv) == "function") and getgenv() or _G
 local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
 end
 if not genv.Ryvora__RyvoAdminConfig then
 	genv.Ryvora__RyvoAdminConfig = {
@@ -9,6 +9,7 @@ if not genv.Ryvora__RyvoAdminConfig then
 end
 
 local config = genv.Ryvora__RyvoAdminConfig
+config.source = config.source or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
 
 _RyEnv = {}
 _RyEnv.Commands = {}

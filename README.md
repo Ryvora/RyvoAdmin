@@ -36,6 +36,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs
 
 Then click the floating button to open the console. Type `help` to list every command.
 
+## Configuration
+
+RyvoAdmin fetches every module from one base URL, stored as `source` in the default config (currently `https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/`). Change it to point at your own fork or mirror. See [the wiki](https://github.com/Ryvora/RyvoAdmin/wiki) for details.
+
 ## Executor Requirements
 
 For full compatibility your executor should provide:

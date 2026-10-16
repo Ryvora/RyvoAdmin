@@ -3,7 +3,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/_registry"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -59,7 +59,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/copypos"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -87,7 +87,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/desync"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -117,7 +117,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/fly"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -256,7 +256,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/help"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -276,7 +276,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/noclip"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -367,7 +367,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/walkspeed"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -405,7 +405,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["config"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -546,7 +546,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/builder"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -665,7 +665,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/floatingButton"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -997,7 +997,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/format"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1089,7 +1089,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/help"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1302,7 +1302,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/impl"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1524,7 +1524,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/notifications"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1702,7 +1702,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["main"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         if not genv.Ryvora__RyvoAdminConfig then
         	genv.Ryvora__RyvoAdminConfig = {
@@ -1711,6 +1711,7 @@ local __RYVORA_BUNDLER_ENV = {
         end
         
         local config = genv.Ryvora__RyvoAdminConfig
+        config.source = config.source or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
         
         
         __RYVORA_BUNDLER_ENV._G.Commands = {}
@@ -1875,7 +1876,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["tempgui"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1908,7 +1909,7 @@ local __RYVORA_BUNDLER_ENV = {
         ["util"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/"..mdl..".luau"))()
+        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         

@@ -10,7 +10,9 @@ local commands = {
 	"help",
 	"copypos",
 	"walkspeed",
-	"desync"
+	"desync",
+	"dex",
+	"rspy",
 }
 
 -- If there's any command that has a subcommand, e.g. fly & unfly (allows counting accurately!)
@@ -21,7 +23,10 @@ local extras = {
 	"unwalkspeed",
 	"undesync", 
 	"bringdesync",
-	"todesync"
+	"todesync",
+	"vex",
+	"cspy",
+	"tspy",
 }
 
 -- CODE FROM HERE; DONT EDIT IT! --

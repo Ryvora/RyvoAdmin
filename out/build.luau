@@ -3,7 +3,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/_registry"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -13,7 +27,9 @@ local __RYVORA_BUNDLER_ENV = {
         	"help",
         	"copypos",
         	"walkspeed",
-        	"desync"
+        	"desync",
+        	"dex",
+        	"rspy",
         }
         
         -- If there's any command that has a subcommand, e.g. fly & unfly (allows counting accurately!)
@@ -24,7 +40,10 @@ local __RYVORA_BUNDLER_ENV = {
         	"unwalkspeed",
         	"undesync", 
         	"bringdesync",
-        	"todesync"
+        	"todesync",
+        	"vex",
+        	"cspy",
+        	"tspy",
         }
         
         -- CODE FROM HERE; DONT EDIT IT! --
@@ -59,7 +78,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/copypos"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -87,7 +120,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/desync"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -114,10 +161,61 @@ local __RYVORA_BUNDLER_ENV = {
         
         
         end,
+        ["commands/dex"] = function(__RYVORA_BUNDLER_ENV)
+        local vexurl = "https://gitlab.com/ltseverydayyou/uuuuuuu/-/raw/main/DexPlusBackup.luau"
+        local dexurl = "https://gitlab.com/ltseverydayyou/uuuuuuu/-/raw/main/DexPlusBackup.luau"
+        
+        
+        local genv = (type(getgenv) == "function") and getgenv() or _G
+        local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
+        end
+        __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
+        
+        __RYVORA_BUNDLER_ENV._G.registerCommand("vex", { "explorer" }, {}, function()
+        	__RYVORA_BUNDLER_ENV._G.notify("Loading Vex Explorer...", 2)
+        	loadstring(game:HttpGet(vexurl))()
+        end)
+        
+        
+        __RYVORA_BUNDLER_ENV._G.registerCommand("dex++", { "dexpp", "dex" }, {}, function()
+        	__RYVORA_BUNDLER_ENV._G.notify("Loading Dex++ (Vex is recommended)...", 2)
+        	loadstring(game:HttpGet(dexurl))()
+        end)
+        
+        end,
         ["commands/fly"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -256,7 +354,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/help"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -276,7 +388,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/noclip"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -364,10 +490,65 @@ local __RYVORA_BUNDLER_ENV = {
         end)
         
         end,
+        ["commands/rspy"] = function(__RYVORA_BUNDLER_ENV)
+        local cobaltspyurl = "https://gitlab.com/upio/cobalt/-/releases/permalink/latest/downloads/Cobalt.luau"
+        local simplespyurl = "https://gitlab.com/ltseverydayyou/uuuuuuu/-/raw/main/SimpleSpyRework.luau"
+        local turtlespyurl = "https://gitlab.com/ltseverydayyou/uuuuuuu/-/raw/main/Turtle%20Spy.lua"
+        
+        local genv = (type(getgenv) == "function") and getgenv() or _G
+        local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
+        end
+        __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
+        
+        __RYVORA_BUNDLER_ENV._G.registerCommand("cspy", { "cobalt" }, {}, function()
+        	__RYVORA_BUNDLER_ENV._G.notify("Loading Cobalt RemoteSpy...", 2)
+        	loadstring(game:HttpGet(cobaltspyurl))()
+        end)
+        
+        
+        __RYVORA_BUNDLER_ENV._G.registerCommand("rspy", { "sspy", "simplespy" }, {}, function()
+        	__RYVORA_BUNDLER_ENV._G.notify("Loading SimpleSpy (Cobalt is recommended)...", 2)
+        	loadstring(game:HttpGet(simplespyurl))()
+        end)
+        
+        __RYVORA_BUNDLER_ENV._G.registerCommand("tspy", { "turtlespy" }, {}, function()
+        	__RYVORA_BUNDLER_ENV._G.notify("Loading TurtleSpy...", 2)
+        	loadstring(game:HttpGet(turtlespyurl))()
+        end)
+        end,
         ["commands/walkspeed"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -405,7 +586,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["config"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -546,7 +741,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/builder"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -665,7 +874,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/floatingButton"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -997,7 +1220,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/format"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1089,7 +1326,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/help"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1302,7 +1553,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/impl"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1524,7 +1789,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["gui/notifications"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1702,7 +1981,20 @@ local __RYVORA_BUNDLER_ENV = {
         ["main"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         if not genv.Ryvora__RyvoAdminConfig then
         	genv.Ryvora__RyvoAdminConfig = {
@@ -1876,7 +2168,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["tempgui"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1909,7 +2215,21 @@ local __RYVORA_BUNDLER_ENV = {
         ["util"] = function(__RYVORA_BUNDLER_ENV)
         local genv = (type(getgenv) == "function") and getgenv() or _G
         local function require(mdl) -- We can safely override this since we will never use it in RyvoAdmin!
-        	return loadstring(game:HttpGet(genv.Ryvora__RyvoAdminConfig.source .. mdl .. ".luau"))()
+        	-- Cache modules so they only execute once (avoids duplicate UI, etc.).
+        	genv.Ryvora__RyvoAdmin = genv.Ryvora__RyvoAdmin or {}
+        	local cache = genv.Ryvora__RyvoAdmin.RequireCache
+        	if not cache then
+        		cache = {}
+        		genv.Ryvora__RyvoAdmin.RequireCache = cache
+        	end
+        	local entry = cache[mdl]
+        	if entry and entry.done then
+        		return entry.value
+        	end
+        	local src = (genv.Ryvora__RyvoAdminConfig and genv.Ryvora__RyvoAdminConfig.source) or "https://raw.githubusercontent.com/Ryvora/RyvoAdmin/refs/heads/main/src/"
+        	local result = loadstring(game:HttpGet(src .. mdl .. ".luau"))()
+        	cache[mdl] = { value = result, done = true }
+        	return result
         end
         __RYVORA_BUNDLER_ENV._G =  __RYVORA_BUNDLER_ENV._G or genv.Ryvora__RyvoAdmin.Env
         
@@ -1950,9 +2270,11 @@ local __RYVORA_BUNDLER_ENV = {
         ["commands/_registry"] = nil,
         ["commands/copypos"] = nil,
         ["commands/desync"] = nil,
+        ["commands/dex"] = nil,
         ["commands/fly"] = nil,
         ["commands/help"] = nil,
         ["commands/noclip"] = nil,
+        ["commands/rspy"] = nil,
         ["commands/walkspeed"] = nil,
         ["config"] = nil,
         ["gui/builder"] = nil,
